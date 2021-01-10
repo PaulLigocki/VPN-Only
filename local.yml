@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  connection: local
+  become: true  
+  vars:
+    vpn_server_ipv4: "999.999.999.999" #999.999.999.999
