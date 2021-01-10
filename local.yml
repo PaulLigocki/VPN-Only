@@ -12,6 +12,7 @@
         port: 666
         proto: udp
         name: au.vpn.private
+    vpn_interface: wg0
   
   tasks:
 
@@ -42,3 +43,14 @@
       direction: out
       comment: "{{ item.name }}"
     loop: "{{ vpn_servers }}"
+
+  #Allow Outbound traffic through VPN Interface
+  #sudo ufw allow out on tun0 from any to any
+  - name: Allow Outbound traffic through VPN Interface
+    ufw:
+      rule: allow
+      direction: out
+      interface: tun0
+      src: any
+      dest: any
+      comment: Allow Outgoing Traffic Via VPN
