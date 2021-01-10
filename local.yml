@@ -3,7 +3,15 @@
   connection: local
   become: true  
   vars:
-    vpn_server_ipv4: "999.999.999.999" #999.999.999.999
+    vpn_servers: #au.vpn.private:555
+      - ip: 999.999.999.999
+        port: 555
+        proto: udp
+        name: au.vpn.private
+      - ip: 888.888.888.888
+        port: 666
+        proto: udp
+        name: au.vpn.private
   
   tasks:
 
@@ -23,3 +31,14 @@
   - name: disable ipv6
     tags: ipv6
     import_tasks: disableipv6.yml
+
+  - name: Allow VPN IPs 
+      tags: firewall
+      ufw:
+        rule: allow
+        port: "{{ item.port }}"
+        proto: "{{ item.proto }}"
+        dest: "{{ item.ip }}"
+        direction: out
+        comment: "{{ item.name }}"
+      loop: "{{ vpn_servers }}"
