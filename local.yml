@@ -33,12 +33,12 @@
     import_tasks: disableipv6.yml
 
   - name: Allow VPN IPs 
-      tags: firewall
-      ufw:
-        rule: allow
-        port: "{{ item.port }}"
-        proto: "{{ item.proto }}"
-        dest: "{{ item.ip }}"
-        direction: out
-        comment: "{{ item.name }}"
-      loop: "{{ vpn_servers }}"
+    tags: firewall
+    ufw:
+      rule: allow
+      port: "{{ item.port }}"
+      proto: "{{ item.proto }}"
+      dest: "{{ item.ip }}"
+      direction: out
+      comment: "{{ item.name }}"
+    loop: "{{ vpn_servers }}"
