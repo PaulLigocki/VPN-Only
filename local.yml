@@ -13,7 +13,7 @@
         proto: udp
         name: au.vpn.private
     vpn_interface: wg0
-    allow_imcoming: yes
+    allow_imcoming: true
   
   tasks:
 
@@ -69,4 +69,4 @@
       dest: any
       comment: Allow Incoming Traffic Via VPN
     when: 
-      - allow_incoming == yes
+      - "{{ allow_incoming | bool }}" == true
