@@ -19,3 +19,7 @@
     tags: debug
     debug:
       var: vars
+  
+  - name: disable ipv6
+    tags: ipv6
+    import_tasks: disableipv6.yml

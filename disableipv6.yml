@@ -1,0 +1,48 @@
+- name: disable IPv6 in /etc/sysctl.conf add comment header
+  tags: ipv6
+  lineinfile:
+    path: /etc/sysctl.conf
+    insertafter: EOF
+    state: present
+    line: '#Disable IPv6'
+    backup: yes
+
+- name: disable IPv6 in /etc/sysctl.conf add config 1 of 3
+  tags: ipv6
+  lineinfile:
+    path: /etc/sysctl.conf
+    insertafter: EOF
+    state: present
+    line: net.ipv6.conf.all.disable_ipv6=1
+    backup: yes
+
+- name: disable IPv6 in /etc/sysctl.conf add config 2 of 3
+  tags: ipv6
+  lineinfile:
+    path: /etc/sysctl.conf
+    insertafter: EOF
+    state: present
+    line: net.ipv6.conf.default.disable_ipv6=1
+    backup: yes
+
+- name: disable IPv6 in /etc/sysctl.conf add config 3 of 3
+  tags: ipv6
+  lineinfile:
+    path: /etc/sysctl.conf
+    insertafter: EOF
+    state: present
+    line: net.ipv6.conf.lo.disable_ipv6=1
+    backup: yes
+
+- name: Reload
+  shell: sysctl -p
+  changed_when: false #Prevents ansible from reporting something has changed
+
+- name: disable IPv6 in /etc/default/ufw #So no IPV6 rules are ever created
+  tags: ipv6
+  lineinfile:
+    path: /etc/default/ufw
+    regexp: '^IPV6='
+    state: present
+    line: IPV6=no
+    backup: yes
