@@ -69,4 +69,4 @@
       dest: any
       comment: Allow Incoming Traffic Via VPN
     when: 
-      - "{{ allow_incoming | bool }}" == true
+      - "{{ allow_incoming | bool }} == true"
