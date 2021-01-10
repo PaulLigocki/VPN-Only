@@ -4,3 +4,18 @@
   become: true  
   vars:
     vpn_server_ipv4: "999.999.999.999" #999.999.999.999
+  
+  tasks:
+
+  #Vars included from this file will take precedance over what is declared above=12(play vars) include_vars=18
+  #https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence
+
+  - name: Include vars file
+    tags: debug
+    include_vars:
+      file: /home/u/vars.yml
+
+  - name: Display all variables/facts known for a host
+    tags: debug
+    debug:
+      var: vars
