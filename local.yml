@@ -68,5 +68,5 @@
       src: any
       dest: any
       comment: Allow Incoming Traffic Via VPN
-  when: 
-    - allow_incoming == yes
+    when: 
+      - allow_incoming == yes
