@@ -50,7 +50,7 @@
     ufw:
       rule: allow
       direction: out
-      interface: tun0
+      interface: "{{ vpn_interface }}"
       src: any
       dest: any
       comment: Allow Outgoing Traffic Via VPN
