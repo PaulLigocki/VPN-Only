@@ -70,3 +70,15 @@
       comment: Allow Incoming Traffic Via VPN
     when: 
       - allow_incoming | bool == true
+
+  #Deny outgoing by default
+  - name: Default deny outgoing
+    ufw:
+      default: deny
+      direction: outgoing
+      
+  #Deny Incoming by default
+  - name: Default deny outgoing
+    ufw:
+      default: deny
+      direction: incoming
