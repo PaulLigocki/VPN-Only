@@ -39,7 +39,7 @@
       ufw:
         rule: allow
         port: "53"
-        #src: "{{ local_lan }}"
+        #src: "{{ local_lan }}".
         direction: out
         comment: Allow outbound DNS so VPN address can be resolved
 
