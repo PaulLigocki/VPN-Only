@@ -35,13 +35,13 @@
     import_tasks: disableipv6.yml
   
   - name: Allow OutBound DNS
-      tags: firewall
-      ufw:
-        rule: allow
-        port: "53"
-        #src: "{{ local_lan }}".
-        direction: out
-        comment: Allow outbound DNS so VPN address can be resolved
+    tags: firewall
+    ufw:
+      rule: allow
+      port: "53"
+      #src: "{{ local_lan }}".
+      direction: out
+      comment: Allow outbound DNS so VPN address can be resolved
 
   - name: Allow VPN IPs 
     tags: firewall
