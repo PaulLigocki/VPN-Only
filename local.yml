@@ -62,7 +62,7 @@
       rule: allow
       port: "{{ item.port }}"
       proto: "{{ item.proto }}"
-      dest: "{{ lookup('community.general.dig', 'example.com.')}}"
+      dest: "{{ lookup('community.general.dig', '{{ item.url }}.')}}"
       direction: out
       comment: "{{ item.name }}"
     loop: "{{ vpn_servers }}"
