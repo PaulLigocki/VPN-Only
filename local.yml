@@ -53,7 +53,7 @@
       proto: "{{ item.proto }}"
       dest: "{{ item.ip }}"
       direction: out
-      comment: "{{ item.name }}"
+      comment: "{{ item.name }} Direct IP Input"
     loop: "{{ vpn_servers }}"
 
   - name: Allow VPN IPs Resolved from URL
@@ -64,7 +64,7 @@
       proto: "{{ item.proto }}"
       dest: "{{ lookup('community.general.dig', '{{ item.url }}.')}}"
       direction: out
-      comment: "{{ item.name }}"
+      comment: "{{ item.name }} IP Resolved from URL"
     loop: "{{ vpn_servers }}"
 
   #Allow Outbound traffic through VPN Interface
