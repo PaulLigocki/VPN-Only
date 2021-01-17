@@ -5,10 +5,12 @@
   vars:
     vpn_servers: #au.vpn.private:555
       - ip: 999.999.999.999
+        url: example.com
         port: 555
         proto: udp
         name: au.vpn.private
       - ip: 888.888.888.888
+        url: example.com
         port: 666
         proto: udp
         name: au.vpn.private
