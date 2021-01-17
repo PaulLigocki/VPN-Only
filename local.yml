@@ -56,6 +56,17 @@
       comment: "{{ item.name }}"
     loop: "{{ vpn_servers }}"
 
+  - name: Allow VPN IPs Resolved from URL
+    tags: firewall
+    ufw:
+      rule: allow
+      port: "{{ item.port }}"
+      proto: "{{ item.proto }}"
+      dest: "{{ lookup('community.general.dig', 'example.com.')}}"
+      direction: out
+      comment: "{{ item.name }}"
+    loop: "{{ vpn_servers }}"
+
   #Allow Outbound traffic through VPN Interface
   #sudo ufw allow out on tun0 from any to any
   - name: Allow Outbound traffic through VPN Interface
